@@ -3,7 +3,7 @@
 var argv = require('minimist')(process.argv.slice(2));
 var command = argv._[0];
 var testCase = argv._[1];
-var revision = argv._[2].toString();
+var revision = argv._[2];
 var run = require('../lib/run');
 var JsPerf = require('../lib/jsperf');
 var fs = require('fs');
@@ -29,18 +29,18 @@ switch (command) {
     run('npm install benchmark beautify-benchmark --save-dev');
     break;
   case 'get':
-    var jsPerf = new JsPerf(testCase, revision);
+    var jsPerf = new JsPerf(testCase, revision.toString());
     jsPerf
       .get()
       .then(() => console.log(`Test case ${testCase}v${revision} installed`))
       .catch(err => console.error(`Failed to install test case ${testCase}v${revision}`, err));
     break;
   case 'run':
-    var jsPerf = new JsPerf(testCase, revision);
+    var jsPerf = new JsPerf(testCase, revision.toString());
     jsPerf.run();
     break;
   case 'preview':
-    var jsPerf = new JsPerf(testCase, revision);
+    var jsPerf = new JsPerf(testCase, revision.toString());
     console.log(jsPerf.getTestSource());
     break;
   default:
