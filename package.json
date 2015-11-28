@@ -28,5 +28,6 @@
     "nock": "^3.3.2",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^1.0.0"
-  }
+  },
+  "engine": "node >= 0.4.0"
 }
