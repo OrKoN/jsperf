@@ -2,7 +2,7 @@
   "name": "jsperf",
   "version": "0.1.0",
   "description": "Run jsperf.com tests locally with your NodeJS version",
-  "main": "index.js",
+  "main": "lib/jsperf.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },
@@ -17,8 +17,6 @@
     "jsperf": "./bin/jsperf.js"
   },
   "dependencies": {
-    "beautify-benchmark": "^0.2.4",
-    "benchmark": "^1.0.0",
     "cheerio": "^0.19.0",
     "js-beautify": "^1.5.10",
     "minimist": "^1.2.0",
@@ -27,6 +25,8 @@
   },
   "devDependencies": {
     "mocha": "^2.3.4",
-    "nock": "^3.3.2"
+    "nock": "^3.3.2",
+    "beautify-benchmark": "^0.2.4",
+    "benchmark": "^1.0.0"
   }
 }
