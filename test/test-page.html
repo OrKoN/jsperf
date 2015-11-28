@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>.replace() vs. .split().join() vs .replaceAll() · jsPerf</title>
+<meta name="description" content="A solution for replacement of strings.">
+<link rel="stylesheet" href="https://jsperf.com/_css/20150703.css">
+<link href="/replace-vs-split-join-vs-replaceall.atom" rel="alternate" type="application/atom+xml" title="Atom feed for revisions of this test case">
+<script>document.documentElement.className='js'</script>
+<!--[if lt IE 9]><script src="https://jsperf.com/html5.js"></script><![endif]-->
+</head>
+<body>
+<article>
+<hgroup>
+  <h1>.replace() vs. .split().join() vs .replaceAll()</h1>
+  <h2>JavaScript performance comparison</h2>
+</hgroup>
+<p class="meta">Revision 67 of this test case created by taheta <time datetime="2015-09-19T08:01:26+02:00" pubdate>on 19th September 2015</time></p>
+<section>
+<h2>Info</h2>
+<p>A solution for replacement of strings.</p>
+</section>
+<section id="prep-code">
+<h2>Preparation code</h2>
+<pre><code>&nbsp;<br><span class="sc2">&lt;<span class="kw2">script</span>></span><br>  Benchmark.<span class="me1">prototype</span>.<span class="me1">setup</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><br>&nbsp; &nbsp; <span class="kw2">var</span> mystring <span class="sy0">=</span> <span class="st0">'okay this is a long long long long string'</span><span class="sy0">;</span><br>&nbsp; &nbsp; <span class="kw2">var</span> regexObj <span class="sy0">=</span> <span class="kw2">new</span> RegExp<span class="br0">&#40;</span><span class="st0">&quot;.&quot;</span><span class="sy0">,</span><span class="st0">&quot;gm&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><br>&nbsp; &nbsp; <span class="kw2">var</span> regexShort <span class="sy0">=</span> <span class="co2">/\./g</span><span class="sy0">;</span><br>  <span class="br0">}</span><span class="sy0">;</span><br><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>></span></code></pre>
+</section>
+<section id="runner">
+<h2>Test runner</h2>
+<p id="firebug"><strong>Warning! For accurate results, please disable Firebug before running the tests. <a href="/faq#firebug-warning">(Why?)</a></strong></p>
+<p id="java"><strong>Java applet disabled.</strong></p>
+<p id="status"><noscript><strong>To run the tests, please <a href="//enable-javascript.com/">enable JavaScript</a> and reload the page.</strong></noscript></p>
+<div id="controls"><button id="run" type="button"></button></div>
+<table id="test-table">
+  <caption>Testing in <span id="user-agent">Chrome 46.0.2490.86</span></caption>
+  <thead>
+    <tr>
+      <th colspan="2">Test</th>
+      <th title="Operations per second (higher is better)">Ops/sec</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" id="title-1"><div>.replace(/ /g,&#039; &#039;)</div></th>
+      <td class="code"><pre><code>result <span class="sy0">=</span> mystring.<span class="me1">replace</span><span class="br0">&#40;</span><span class="co2">/ /g</span><span class="sy0">,</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span></code></pre></td>
+      <td id="results-1" class="results">pending…</td>
+    </tr>
+    <tr>
+      <th scope="row" id="title-2"><div>.replace(/ /g,&#039; &#039;)</div></th>
+      <td class="code"><pre><code>result <span class="sy0">=</span> mystring.<span class="me1">replace</span><span class="br0">&#40;</span><span class="co2">/\s+/g</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></code></pre></td>
+      <td id="results-2" class="results">pending…</td>
+    </tr>
+    <tr>
+      <th scope="row" id="title-3"><div>.split(&#039; &#039;).join(&#039;&#039;)</div></th>
+      <td class="code"><pre><code>result <span class="sy0">=</span> mystring.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">' '</span><span class="br0">&#41;</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span></code></pre></td>
+      <td id="results-3" class="results">pending…</td>
+    </tr>
+    <tr>
+      <th scope="row" id="title-4"><div>.split(/\s+/g).join(&#039;&#039;)</div></th>
+      <td class="code"><pre><code>result <span class="sy0">=</span> mystring.<span class="me1">split</span><span class="br0">&#40;</span><span class="co2">/\s+/g</span><span class="br0">&#41;</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span></code></pre></td>
+      <td id="results-4" class="results">pending…</td>
+    </tr>
+    <tr>
+      <th scope="row" id="title-5"><div>.split(/ /g).join(&#039;&#039;)</div></th>
+      <td class="code"><pre><code>result <span class="sy0">=</span> mystring.<span class="me1">split</span><span class="br0">&#40;</span><span class="co2">/ /g</span><span class="br0">&#41;</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span></code></pre></td>
+      <td id="results-5" class="results">pending…</td>
+    </tr>
+    <tr>
+      <th scope="row" id="title-6"><div>.replace(&quot; &quot;,&quot;&quot;)</div></th>
+      <td class="code"><pre><code>result <span class="sy0">=</span> mystring.<span class="me1">replace</span><span class="br0">&#40;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></code></pre></td>
+      <td id="results-6" class="results">pending…</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<section>
+<h2 id="results">Compare results of other browsers</h2>
+<div id="bs-results"></div>
+</section>
+<section>
+<h2>Revisions</h2>
+<p>You can <a href="/replace-vs-split-join-vs-replaceall/67/edit" rel="nofollow">edit these tests or add even more tests to this page</a> by appending <code>/edit</code> to the URL. Here’s a list of current revisions for this page:</p>
+<ul>
+  <li><a href="/replace-vs-split-join-vs-replaceall">Revision 1</a>: published by Roberto Frega <time datetime="2012-09-19T16:49:00+02:00" pubdate>on 19th September 2012</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/2">Revision 2</a>: published <time datetime="2012-09-25T13:49:15+02:00" pubdate>on 25th September 2012</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/3">Revision 3</a>: published <time datetime="2012-11-02T00:50:30+01:00" pubdate>on 2nd November 2012</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/4">Revision 4</a>: published <time datetime="2012-11-06T13:39:24+01:00" pubdate>on 6th November 2012</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/5">Revision 5</a>: published by rmaksim <time datetime="2012-11-13T20:37:47+01:00" pubdate>on 13th November 2012</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/6">Revision 6</a>: published by dongy <time datetime="2012-11-15T03:15:02+01:00" pubdate>on 15th November 2012</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/9">Revision 9</a>: published <time datetime="2013-01-05T18:32:47+01:00" pubdate>on 5th January 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/10">Revision 10</a>: published by Jens Duttke <time datetime="2013-02-01T09:27:39+01:00" pubdate>on 1st February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/11">Revision 11</a>: published <time datetime="2013-02-14T07:19:00+01:00" pubdate>on 14th February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/12">Revision 12</a>: published <time datetime="2013-02-14T17:29:07+01:00" pubdate>on 14th February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/14">Revision 14</a>: published <time datetime="2013-02-22T12:03:51+01:00" pubdate>on 22nd February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/15">Revision 15</a>: published <time datetime="2013-02-22T12:31:57+01:00" pubdate>on 22nd February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/16">Revision 16</a>: published <time datetime="2013-02-22T13:19:26+01:00" pubdate>on 22nd February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/17">Revision 17</a>: published <time datetime="2013-02-26T20:12:21+01:00" pubdate>on 26th February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/18">Revision 18</a>: published <time datetime="2013-02-26T22:13:10+01:00" pubdate>on 26th February 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/19">Revision 19</a>: published <time datetime="2013-03-01T17:43:23+01:00" pubdate>on 1st March 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/20">Revision 20</a>: published <time datetime="2013-03-03T12:16:41+01:00" pubdate>on 3rd March 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/21">Revision 21</a>: published <time datetime="2013-03-03T12:17:47+01:00" pubdate>on 3rd March 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/23">Revision 23</a>: published by Sanderd17 <time datetime="2013-04-15T10:52:51+02:00" pubdate>on 15th April 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/24">Revision 24</a>: published <time datetime="2013-05-02T20:41:19+02:00" pubdate>on 2nd May 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/25">Revision 25</a>: published by joequincy <time datetime="2013-05-05T01:59:29+02:00" pubdate>on 5th May 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/26">Revision 26</a>: published <time datetime="2013-05-05T02:09:20+02:00" pubdate>on 5th May 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/27">Revision 27</a>: published <time datetime="2013-05-05T02:18:11+02:00" pubdate>on 5th May 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/28">Revision 28</a>: published <time datetime="2013-05-05T02:19:09+02:00" pubdate>on 5th May 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/29">Revision 29</a>: published <time datetime="2013-05-05T02:31:48+02:00" pubdate>on 5th May 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/30">Revision 30</a>: published <time datetime="2013-05-05T02:43:06+02:00" pubdate>on 5th May 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/31">Revision 31</a>: published by Tamil Vendhan <time datetime="2013-06-11T11:36:14+02:00" pubdate>on 11th June 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/32">Revision 32</a>: published <time datetime="2013-06-11T17:45:07+02:00" pubdate>on 11th June 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/33">Revision 33</a>: published <time datetime="2013-06-17T16:37:03+02:00" pubdate>on 17th June 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/34">Revision 34</a>: published <time datetime="2013-06-17T16:43:00+02:00" pubdate>on 17th June 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/36">Revision 36</a>: published <time datetime="2013-07-05T02:50:00+02:00" pubdate>on 5th July 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/37">Revision 37</a>: published <time datetime="2013-08-17T15:40:38+02:00" pubdate>on 17th August 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/38">Revision 38</a>: published <time datetime="2013-08-30T01:05:51+02:00" pubdate>on 30th August 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/39">Revision 39</a>: published <time datetime="2013-08-30T01:06:36+02:00" pubdate>on 30th August 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/40">Revision 40</a>: published <time datetime="2013-08-30T01:07:04+02:00" pubdate>on 30th August 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/41">Revision 41</a>: published by shilman <time datetime="2013-09-03T02:46:08+02:00" pubdate>on 3rd September 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/42">Revision 42</a>: published <time datetime="2013-11-08T18:33:21+01:00" pubdate>on 8th November 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/46">Revision 46</a>: published <time datetime="2013-12-28T04:48:28+01:00" pubdate>on 28th December 2013</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/47">Revision 47</a>: published <time datetime="2014-01-07T23:13:13+01:00" pubdate>on 7th January 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/48">Revision 48</a>: published <time datetime="2014-02-11T14:29:14+01:00" pubdate>on 11th February 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/49">Revision 49</a>: published <time datetime="2014-03-14T15:59:10+01:00" pubdate>on 14th March 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/50">Revision 50</a>: published <time datetime="2014-07-07T22:56:08+02:00" pubdate>on 7th July 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/51">Revision 51</a>: published <time datetime="2014-07-27T14:28:44+02:00" pubdate>on 27th July 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/52">Revision 52</a>: published <time datetime="2014-08-05T05:37:28+02:00" pubdate>on 5th August 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/54">Revision 54</a>: published <time datetime="2014-10-29T21:15:43+01:00" pubdate>on 29th October 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/55">Revision 55</a>: published by Harald Glatt <time datetime="2014-11-07T21:43:15+01:00" pubdate>on 7th November 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/56">Revision 56</a>: published by next <time datetime="2014-11-08T17:31:41+01:00" pubdate>on 8th November 2014</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/59">Revision 59</a>: published <time datetime="2015-02-02T12:41:48+01:00" pubdate>on 2nd February 2015</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/60">Revision 60</a>: published <time datetime="2015-02-02T12:41:50+01:00" pubdate>on 2nd February 2015</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/62">Revision 62</a>: published by SgtPooki <time datetime="2015-03-03T02:56:52+01:00" pubdate>on 3rd March 2015</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/63">Revision 63</a>: published <time datetime="2015-05-22T20:02:37+02:00" pubdate>on 22nd May 2015</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/64">Revision 64</a>: published <time datetime="2015-06-16T07:37:44+02:00" pubdate>on 16th June 2015</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/65">Revision 65</a>: published <time datetime="2015-08-06T17:48:55+02:00" pubdate>on 6th August 2015</time></li>
+  <li><a href="/replace-vs-split-join-vs-replaceall/66">Revision 66</a>: published <time datetime="2015-09-07T04:17:01+02:00" pubdate>on 7th September 2015</time></li>
+  <li class="current"><a href="/replace-vs-split-join-vs-replaceall/67">Revision 67</a>: published by taheta <time datetime="2015-09-19T08:01:26+02:00" pubdate>on 19th September 2015</time></li>
+</ul>
+</section>
+<section id="comments"><h1>0 comments</h1><div id="comments-wrapper">
+<p>Comment form temporarily disabled.</p>
+<form action="/replace-vs-split-join-vs-replaceall/67#comment-form" method="post" id="comment-form" disabled>
+  <fieldset>
+    <h2>Add a comment</h2>
+    <div><label for="author">Name <em title="This field is required">*</em> </label><input type="text" name="author" id="author" required></div>
+    <div><label for="author-email">Email <em title="This field is required">*</em> </label><label class="inline"><input type="email" name="author-email" id="author-email" required> (only used for Gravatar)</label></div>
+    <div><label for="author-url">URL </label><input type="url" name="author-url" id="author-url"></div>
+    <div><label for="message">Message <em title="This field is required">*</em> <span>Markdown syntax is allowed</span></label><textarea name="message" id="message" maxlength="16777215" required></textarea></div>
+    <div class="question"><label for="question">Are you a spammer? <span>(just answer the question and repeat the last letter)</span> </label><input type="text" name="question" id="question"></div>
+    <div class="buttons"><input type="submit" class="submit" value="Add comment"></div>
+  </fieldset>
+</form>
+</div>
+</section>
+</article>
+<footer><a href="/">Add test</a> · <a href="/faq">FAQ</a> · <a href="/faq#donate">Donate</a> · <a href="https://twitter.com/jsperf" rel="nofollow">twitter: @jsperf</a> · <a href="https://github.com/jsperf/jsperf.com">source on GitHub</a> · <a href="http://benchmarkjs.com/">Benchmark.js</a> · by <a href="https://mathiasbynens.be/">@mathias</a> and <a href="/contributors">contributors</a></footer>
+<script src="/benchmark-47.js"></script><script>
+  ui.browserscope.key = 'ahBzfnVhLXByb2ZpbGVyLWhychELEgRUZXN0GICAgL-B4rYLDA';
+
+  ui.add('.replace(/ /g,\' \')', '\
+    result = mystring.replace(/ /g,\'\');'
+  )
+  .add('.replace(/ /g,\' \')', '\
+    result = mystring.replace(/\\s+/g,\"\");'
+  )
+  .add('.split(\' \').join(\'\')', '\
+    result = mystring.split(\' \').join(\'\');'
+  )
+  .add('.split(/\\s+/g).join(\'\')', '\
+    result = mystring.split(/\\s+/g).join(\'\');'
+  )
+  .add('.split(/ /g).join(\'\')', '\
+    result = mystring.split(/ /g).join(\'\');'
+  )
+  .add('.replace(\" \",\"\")', '\
+    result = mystring.replace(\" \",\"\");'
+  );
+
+  Benchmark.prototype.setup = '\
+    var mystring = \'okay this is a long long long long string\';\n\
+    var regexObj = new RegExp(\".\",\"gm\");\n\
+    var regexShort = /\\./g;';
+</script>
+
+</body>
+</html>
