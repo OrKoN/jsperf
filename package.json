@@ -1,6 +1,6 @@
 {
   "name": "jsperf",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Run jsperf.com tests locally with your NodeJS version",
   "main": "lib/jsperf.js",
   "scripts": {
