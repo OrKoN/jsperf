@@ -14,7 +14,7 @@ npm install jsperf -g
 
 ## Warning
 
-**The tool runs the code fetched from jsperf.com w/o any processing. This can be very dangerous. Review the tests before running or use a disposable sandboxes**
+**The tool runs the code fetched from jsperf.com w/o any processing. This can be very dangerous. Review the tests before running or use disposable sandboxes**
 
 This also means that browser-dependant tests will not run (at least with the current version). Fetch only pure JS tests.
 
