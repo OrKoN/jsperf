@@ -36,6 +36,12 @@ jsperf init
 Get a test:
 
 ```sh
+jsperf get <test-slug> <revision>
+```
+
+For instance:
+
+```sh
 jsperf get replace-vs-split-join-vs-replaceall 67
 ```
 

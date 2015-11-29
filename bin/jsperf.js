@@ -9,7 +9,11 @@ var JsPerf = require('../lib/jsperf');
 var fs = require('fs');
 
 function printUsage() {
-  console.log();
+  console.log('Usage: ');
+  console.log('    jsperf init - initialize the current directory for performance tests');
+  console.log('    jsperf get <test-case-slug> <revision> - download a test revision from jsperf.com');
+  console.log('    jsperf preview <test-case-slug> <revision> - output a fetched test revision');
+  console.log('    jsperf run <test-case-slug> <revision> - run a test revision');
 }
 
 switch (command) {
