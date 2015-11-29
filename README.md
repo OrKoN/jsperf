@@ -59,8 +59,8 @@ jsperf run replace-vs-split-join-vs-replaceall 67
 
 Results:
 
-![jsperf results](./results.png "jsperf results")
+![jsperf results](https://raw.githubusercontent.com/OrKoN/jsperf/master/results.png "jsperf results")
 
 ## License
 
-[LICENSE](./LICENSE)
+[LICENSE](https://raw.githubusercontent.com/OrKoN/jsperf/master/LICENSE)
