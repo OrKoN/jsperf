@@ -1,6 +1,6 @@
 # JSPerf for NodeJS
 
-[![Version](https://img.shields.io/npm/v/jsperf.svg)]()
+[![Version](https://img.shields.io/npm/v/jsperf.svg)](https://www.npmjs.com/package/jsperf)
 [![Build Status](http://img.shields.io/travis/OrKoN/jsperf.svg?style=flat)](https://travis-ci.org/OrKoN/jsperf)
 [![Downloads](https://img.shields.io/npm/dm/jsperf.svg)](https://www.npmjs.com/package/jsperf)
 [![Dependencies](https://img.shields.io/david/OrKoN/jsperf.svg)](https://github.com/OrKoN/jsperf/blob/master/package.json#L19)
