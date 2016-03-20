@@ -4,16 +4,17 @@ var argv = require('minimist')(process.argv.slice(2));
 var command = argv._[0];
 var testCase = argv._[1];
 var revision = argv._[2];
+var host = argv.host;
 var run = require('../lib/run');
 var JsPerf = require('../lib/jsperf');
 var fs = require('fs');
 
 function printUsage() {
   console.log('Usage: ');
-  console.log('    jsperf init - initialize the current directory for performance tests');
-  console.log('    jsperf get <test-case-slug> <revision> - download a test revision from jsperf.com');
-  console.log('    jsperf preview <test-case-slug> <revision> - output a fetched test revision');
-  console.log('    jsperf run <test-case-slug> <revision> - run a test revision');
+  console.log('    `jsperf init` - initialize the current directory for performance tests');
+  console.log('    `jsperf get <test-case-slug> <revision> [--host https://jsperf.com]` - download a test revision from jsperf.com');
+  console.log('    `jsperf preview <test-case-slug> <revision> [--host https://jsperf.com]` - output a fetched test revision');
+  console.log('    `jsperf run <test-case-slug> <revision> [--host https://jsperf.com]` - run a test revision');
 }
 
 switch (command) {
@@ -33,7 +34,9 @@ switch (command) {
     run('npm install benchmark beautify-benchmark --save-dev');
     break;
   case 'get':
-    var jsPerf = new JsPerf(testCase, revision.toString());
+    var jsPerf = new JsPerf(testCase, revision.toString(), {
+      host: host,
+    });
     jsPerf
       .get()
       .then(() => console.log(`Test case ${testCase}v${revision} installed`))
