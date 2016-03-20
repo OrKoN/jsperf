@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/npm/v/jsperf.svg)]()
 [![Build Status](http://img.shields.io/travis/OrKoN/jsperf.svg?style=flat)](https://travis-ci.org/OrKoN/jsperf)
 [![Downloads](https://img.shields.io/npm/dm/jsperf.svg)](https://www.npmjs.com/package/jsperf)
-[![Dependencies](https://img.shields.io/david/OrKoN/jsperf.svg)]()
+[![Dependencies](https://img.shields.io/david/OrKoN/jsperf.svg)](https://github.com/OrKoN/jsperf/blob/master/package.json#L19)
 
 This command line utility helps you run performance tests from http://jsperf.com locally with NodeJS.
 
