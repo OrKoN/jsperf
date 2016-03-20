@@ -1,9 +1,9 @@
 # JSPerf for NodeJS
 
-[![npm version](https://badge.fury.io/js/jsperf.svg)](http://badge.fury.io/js/jsperf)
+[![Version](https://img.shields.io/npm/v/jsperf.svg)]()
 [![Build Status](http://img.shields.io/travis/OrKoN/jsperf.svg?style=flat)](https://travis-ci.org/OrKoN/jsperf)
-[![npm](https://img.shields.io/npm/dm/jsperf.svg)](https://www.npmjs.com/package/jsperf)
-[![David](https://img.shields.io/david/OrKoN/jsperf.svg)]()
+[![Downloads](https://img.shields.io/npm/dm/jsperf.svg)](https://www.npmjs.com/package/jsperf)
+[![Dependencies](https://img.shields.io/david/OrKoN/jsperf.svg)]()
 
 This command line utility helps you run performance tests from http://jsperf.com locally with NodeJS.
 
